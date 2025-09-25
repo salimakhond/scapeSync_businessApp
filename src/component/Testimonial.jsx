@@ -35,9 +35,9 @@ const Testimonial = () => {
   ];
 
   return (
-    <section className="mt-30 lg:mt-40 px-8 md:px-30">
-      <div className="w-full m-auto text-center mb-[60px]">
-        <h2 className="text-4xl md:text-[44px] lg:text-5xl leading-16 text-[#212B36] font-bold mb-2">
+    <section className="mt-20 md:mt-24 lg:mt-40 px-8 md:px-30">
+      <div className="w-full m-auto text-center mb-10 md:mb-[60px]">
+        <h2 className="text-2xl md:text-[44px] lg:text-5xl leading-16 text-[#212B36] font-bold mb-2">
           What Our Users Are Saying
         </h2>
         <p className="text-[#637381] text-sm font-normal leading-[150%] md:w-[555px] m-auto">
@@ -47,7 +47,7 @@ const Testimonial = () => {
       </div>
 
       <div className="relative">
-        <div className="absolute top-1/2 left-1/2 w-11/12 h-11/12 transform -translate-x-1/2 -translate-y-1/2 bg-[rgba(155,255,150,0.1)]  blur-[120px] rounded-full -z-10"></div>
+        <div className="absolute top-1/2 left-1/2 w-10/12 h-10/12 transform -translate-x-1/2 -translate-y-1/2 bg-[rgba(155,255,150,0.1)]  blur-[120px] rounded-full -z-10"></div>
         <Swiper
           spaceBetween={30}
           slidesPerView={3}
@@ -65,7 +65,7 @@ const Testimonial = () => {
         >
           {testimonials.map((t, i) => (
             <SwiperSlide key={i}>
-              <div className="p-7 rounded-[22px] bg-white drop-shadow-[0_8px_32px_rgba(146,171,145,0.1)]">
+              <div className="p-7 rounded-[22px] bg-white shadow-[0_16px_32px_-4px_rgba(146,171,145,0.1)]">
                 <div className="mb-7 flex items-center gap-4">
                   <img src={t.img} alt="team image" />
                   <div>
