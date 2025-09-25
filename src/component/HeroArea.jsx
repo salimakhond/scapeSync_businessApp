@@ -7,7 +7,6 @@ import analyticsIcon from "../assets/icon/analyticsIcon.png";
 import bookingIcon from "../assets/icon/bookingIcon.png";
 import secureIcon from "../assets/icon/secureIcon.png";
 import trackingIcon from "../assets/icon/trackingIcon.png";
-import Services from "./Services";
 const HeroArea = () => {
   return (
     <section className="relative">
@@ -22,7 +21,7 @@ const HeroArea = () => {
           </a>
         </div>
         <div className="flex-none">
-          <button className="btn bg-[#3BA334] font-bold text-base text-white mx-[26] my-[10px]">
+          <button className="btn bg-[#3BA334] drop-shadow-[0_8px_16px_rgba(57,164,50,0.24)] font-bold text-base text-white mx-[26] my-[10px]">
             Get Started
           </button>
         </div>
@@ -131,7 +130,6 @@ const HeroArea = () => {
           </div>
         </div>
       </div>
-      <Services />
     </section>
   );
 };

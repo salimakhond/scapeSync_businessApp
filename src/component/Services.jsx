@@ -11,7 +11,7 @@ const Services = () => {
     <section className="mt-30 lg:mt-40 px-8 md:px-30">
       <div className="w-full m-auto text-center">
         <div className="relative">
-          <h2 className="text-4xl md:text-[44px] md:text-5xl leading-16 md:leading-24 text-[#212B36] font-bold mb-3 z-10">
+          <h2 className="text-4xl md:text-[44px] lg:text-5xl leading-16 text-[#212B36] font-bold mb-3 z-10">
             Build for Everyone
           </h2>
           <img
@@ -52,12 +52,12 @@ const Services = () => {
               alt="servicesImg"
               className="w-full z-10"
             />
-            <div className="hidden lg:block absolute -top-[110px] left-[100px] w-[500px] h-[650px] bg-[rgba(155,255,150,0.1)] -rotate-45 blur-[100px] rounded-full -z-10"></div>
+            <div className="hidden lg:block absolute -top-[110px] left-[100px] w-[500px] h-[650px] bg-[rgba(155,255,150,0.1)] -rotate-45 blur-[120px] rounded-full -z-10"></div>
             <div className="absolute -bottom-1 left-0 w-full h-50 bg-gradient-to-t from-white to-transparent"></div>
           </div>
           <div className="w-full lg:w-6/12 mt-10 relative">
             {/*  shadow */}
-            <div className="hidden md:block absolute bg-[rgba(157,255,153,0.3)] w-[400px] h-[520px] top-[-156px] left-[-500px] md:left-[-425px] rotate-[-54deg] z-10 blur-[200px]  rounded-full"></div>
+            <div className="hidden md:block absolute bg-[rgba(157,255,153,0.2)] w-[400px] h-[520px] top-[-156px] left-[-500px] md:left-[-425px] rotate-[-54deg] z-10 blur-[250px]  rounded-full"></div>
 
             <button className="text-[#3BA334] font-semibold text-sm px-5 py-[6px] border border-[#3BA334] rounded-[60px] mb-4">
               Users
@@ -90,12 +90,12 @@ const Services = () => {
               alt="servicesImg"
               className="w-full z-10"
             />
-            <div className="hidden lg:block absolute -top-[120px] -left-[80px] w-[500px] h-[650px] bg-[rgba(155,255,150,0.1)] rotate-45 blur-[100px] rounded-full -z-10"></div>
+            <div className="hidden lg:block absolute -top-[120px] -left-[80px] w-[500px] h-[650px] bg-[rgba(155,255,150,0.1)] rotate-45 blur-[120px] rounded-full -z-10"></div>
             <div className="absolute -bottom-1 left-0 w-full h-50 bg-gradient-to-t from-white to-transparent"></div>
           </div>
           <div className="w-full lg:w-6/12 mt-10 relative">
             {/*  shadow */}
-            <div className="hidden md:block  absolute bg-[rgba(157,255,153,0.3)] w-[400px] h-[520px] top-[-156px] md:right-[10px] lg:right-[-210px] rotate-[-54deg] z-10 blur-[200px] rounded-full"></div>
+            <div className="hidden md:block  absolute bg-[rgba(157,255,153,0.2)] w-[400px] h-[520px] top-[-156px] md:right-[10px] lg:right-[-210px] rotate-[-54deg] z-10 blur-[250px] rounded-full"></div>
 
             <button className="text-[#3BA334] font-semibold text-sm px-5 py-[6px] border border-[#3BA334] rounded-[60px] mb-4">
               Business Owners
@@ -128,12 +128,12 @@ const Services = () => {
               alt="servicesImg"
               className="w-full z-10"
             />
-            <div className="hidden lg:block absolute -top-[150px] left-[120px] w-[500px] h-[650px] bg-[rgba(155,255,150,0.1)] -rotate-45 blur-[100px] rounded-full -z-10"></div>
+            <div className="hidden lg:block absolute -top-[150px] left-[120px] w-[500px] h-[650px] bg-[rgba(155,255,150,0.1)] -rotate-45 blur-[120px] rounded-full -z-10"></div>
             <div className="absolute bottom-0 left-0 w-full h-50 bg-gradient-to-t from-white to-transparent"></div>
           </div>
           <div className="w-full lg:w-6/12 mt-10 relative">
             {/*  shadow */}
-            <div className="hidden md:block absolute bg-[rgba(157,255,153,0.3)] w-[400px] h-[520px] top-[-156px] left-[-500px] md:left-[-425px] rotate-[-54deg] z-10 blur-[200px] rounded-full"></div>
+            <div className="hidden md:block absolute bg-[rgba(157,255,153,0.2)] w-[400px] h-[520px] top-[-156px] left-[-500px] md:left-[-425px] rotate-[-54deg] z-10 blur-[250px] rounded-full"></div>
 
             <button className="text-[#3BA334] font-semibold text-sm px-5 py-[6px] border border-[#3BA334] rounded-[60px] mb-4">
               Employees
