@@ -1,10 +1,11 @@
 import logo from "../assets/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 
 const VerifyPage = () => {
   const [otpCode, setOtpCode] = useState(new Array(6).fill(""));
+  const navigate = useNavigate();
 
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return;
@@ -42,10 +43,11 @@ const VerifyPage = () => {
       );
 
       const data = await response.json();
-      console.log("OTP verified response:", data);
+      // console.log("OTP verified response:", data);
 
       if (response.ok) {
         alert("OTP verified successfully!");
+        navigate("/login");
       } else {
         alert("OTP verification failed");
       }

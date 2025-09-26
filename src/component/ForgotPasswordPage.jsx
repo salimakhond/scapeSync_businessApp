@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import { FaChevronLeft } from "react-icons/fa";
 
 const ForgotPasswordPage = () => {
+  const navigate = useNavigate();
+
   const handleForgotPassword = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -24,13 +26,13 @@ const ForgotPasswordPage = () => {
       );
 
       const data = await response.json();
-      console.log("Forget Password response:", data);
+      //   console.log("Forget Password response:", data);
 
       if (response.ok) {
         alert(
           "If this email is registered, a password reset link has been sent."
         );
-        // history.push("/login"); // redirect to login page
+        navigate("/forgot-verify-otp");
       } else {
         alert("Failed to send reset link. Try again.");
       }
@@ -39,6 +41,7 @@ const ForgotPasswordPage = () => {
       alert("Something went wrong!");
     }
   };
+
   return (
     <div className="max-w-[1440px] mx-auto public-sans">
       <div className="py-6 px-8 mb-3">

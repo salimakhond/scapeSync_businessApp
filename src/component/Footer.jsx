@@ -8,7 +8,24 @@ import footerVectorThree from "../assets/footerVectorThree.png";
 
 const Footer = () => {
   return (
-    <footer className="public-sans bg-[#0F3B34] pt-16 md:pt-[100px] ">
+    <footer className="public-sans bg-[#0F3B34] pt-16 md:pt-[100px] relative">
+      <div>
+        <img
+          className="absolute bottom-0 right-[200px] md:right-[400px] opacity-25"
+          src={footerVectorOne}
+          alt="footer image"
+        />
+        <img
+          className="absolute top-0 right-0 opacity-25"
+          src={footerVectorTwo}
+          alt="footer image"
+        />
+        <img
+          className="absolute bottom-0 right-0 opacity-25"
+          src={footerVectorThree}
+          alt="footer image"
+        />
+      </div>
       <div className="max-w-[1440px] mx-auto px-8 md:px-30 mb-16">
         <div className="grid lg:grid-cols-12 gap-y-10 lg:gap-0 items-center justify-between">
           <div className="col-span-3">
@@ -29,7 +46,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="flex flex-row space-x-8 mt-[100px]">
+        <div className="flex flex-row space-x-8 mt-[100px] z-10">
           <FaYoutube className="text-white text-3xl" />
           <FaXTwitter className="text-white text-3xl" />
           <FaFacebook className="text-white text-3xl" />

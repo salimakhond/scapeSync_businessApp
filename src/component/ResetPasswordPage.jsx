@@ -1,17 +1,62 @@
 import logo from "../assets/logo.svg";
 import { useState } from "react";
 import { FaEye, FaEyeSlash, FaChevronLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ResetPasswordPage = () => {
   const [showPass, setShowPass] = useState(false);
   const [showConfPass, setConfShowPass] = useState(false);
+  const navigate = useNavigate();
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
+
     const formData = new FormData(e.target);
     const { password, password_confirmation } = Object.fromEntries(formData);
+
+    if (password !== password_confirmation) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    const token = localStorage.getItem("reset_token");
+    // console.log(token);
+
+    if (!token) {
+      alert("Token not found. Please verify OTP again.");
+      return;
+    }
+
+    try {
+      const body = new FormData();
+      body.append("password", password);
+      body.append("password_confirmation", password_confirmation);
+      body.append("token", token);
+
+      const response = await fetch(
+        "https://apitest.softvencefsd.xyz/api/reset-password",
+        {
+          method: "POST",
+          body: body,
+        }
+      );
+
+      const data = await response.json();
+      //   console.log("Reset Password response:", data);
+
+      if (response.ok) {
+        alert("Password reset successful!");
+        localStorage.removeItem("reset_token");
+        navigate("/");
+      } else {
+        alert("Failed to reset password");
+      }
+    } catch (error) {
+      console.error("Error resetting password:", error);
+      alert("Something went wrong!");
+    }
   };
+
   return (
     <div className="max-w-[1440px] mx-auto public-sans">
       <div className="py-6 px-8 mb-3">

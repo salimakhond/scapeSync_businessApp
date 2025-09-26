@@ -2,10 +2,11 @@ import logo from "../assets/logo.svg";
 import googleIcon from "../assets/icon/googleIcon.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -30,12 +31,12 @@ const Login = () => {
       );
 
       const data = await response.json();
-      console.log("Login response:", data);
+      // console.log("Login response:", data);
 
       if (data.token) {
         localStorage.setItem("token", data.token);
         alert("Login successful!");
-        // history.push("/dashboard"); // redirect to dashboard
+        navigate("/");
       } else {
         alert(data.message || "Login failed!");
       }

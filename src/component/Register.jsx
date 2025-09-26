@@ -1,12 +1,13 @@
 import logo from "../assets/logo.svg";
 import googleIcon from "../assets/icon/googleIcon.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
   const [showConfPass, setConfShowPass] = useState(false);
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -20,6 +21,11 @@ const Register = () => {
       checkbox,
     } = Object.fromEntries(formData);
     const terms = !!checkbox;
+
+    if (password !== password_confirmation) {
+      alert("Passwords do not match!");
+      return;
+    }
 
     try {
       const response = await fetch(
@@ -41,11 +47,12 @@ const Register = () => {
       );
 
       const data = await response.json();
-      console.log("Registration response:", data);
+      // console.log("Registration response:", data);
 
       if (data.token) {
         localStorage.setItem("token", data.token);
         alert("Registration successful!");
+        navigate("/verify_otp");
       } else {
         alert(data.message || "Registration failed!");
       }
