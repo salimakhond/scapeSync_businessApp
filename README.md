@@ -1,16 +1,48 @@
-# React + Vite
+# 🚀 ScapeSync Landing Page with Authentication
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔗 **Live Demo:** [View ScapeSync Site](https://scapesync-black.vercel.app/)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📖 Project Overview
 
-## React Compiler
+This project is a **pixel-perfect, production-ready landing page** with authentication (Register, Verify OTP, Login, Forgot Password, Reset Password).  
+It was built based on the provided **Figma design** and implemented with full responsiveness, accessibility, and smooth animations.
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Task Requirements (Implemented)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Design (Figma)
+
+- Recreated landing page + auth pages **pixel-perfect**.
+- Accurate **layout, spacing, color, typography**.
+- Fully **responsive** (mobile, tablet, desktop).
+
+### Authentication APIs
+
+- Integrated all endpoints:
+  - **Register → Verify OTP → Login → Forgot Password → Forgot Verify OTP → Reset Password and etc**.
+- Client-side validation with **error handling**.
+- Implemented user-friendly error/success messages.
+- Correct flow:
+  - After registration → redirect to **Login Page**.
+  - After login → redirect to **Home Page**.
+  - Forgot Password → OTP verification → Reset password flow works end-to-end.
+
+### 🌐 Deployment
+
+- Deployed on **Vercel**.
+
+---
+
+## 🛠️ Tech Stack
+
+- **React** – Frontend library
+- **React DOM** – DOM rendering
+- **Tailwind CSS** – Utility-first styling
+- **DaisyUI** – Tailwind component library
+- **React Icons** – Icons
+- **React Swiper** – Slider/Carousel
+- **SweetAlert2** – (for alerts)
+- **Vercel** – Deployment
