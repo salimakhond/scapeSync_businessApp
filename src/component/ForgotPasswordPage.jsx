@@ -1,18 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import { FaChevronLeft } from "react-icons/fa";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const ForgotPasswordPage = () => {
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleForgotPassword = async (e) => {
     e.preventDefault();
+    setError("");
+
     const formData = new FormData(e.target);
     const { email } = Object.fromEntries(formData);
-    if (!email) {
-      alert("Please enter your email");
-      return;
-    }
+
     try {
       const formData = new FormData();
       formData.append("email", email);
@@ -26,19 +28,23 @@ const ForgotPasswordPage = () => {
       );
 
       const data = await response.json();
-      //   console.log("Forget Password response:", data);
+      // console.log("Forget Password response:", data);
 
       if (response.ok) {
-        alert(
-          "If this email is registered, a password reset link has been sent."
-        );
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${data.message || "Password reset link sent."} `,
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/forgot-verify-otp");
       } else {
-        alert("Failed to send reset link. Try again.");
+        setError(data.message || "Failed to send reset link. Try again.");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Something went wrong!");
+      setError("Something went wrong!");
     }
   };
 
@@ -69,13 +75,19 @@ const ForgotPasswordPage = () => {
             name="email"
             className="mb-6 input w-full text-base text-[#212B36] placeholder-[#919EAB] h-14 font-normal pl-[14px] px-4 border-[#919EAB52] rounded-lg focus:outline-none focus:border-[#919EAB52] focus:ring-0"
             placeholder="Email"
+            required
           />
-
           <input
             type="submit"
-            className="!bg-[#49AE44] drop-shadow-[0_8px_16px_rgba(57,164,50,0.24)] font-bold text-base text-white rounded-lg py-3 mb-6 cursor-pointer"
+            className="!bg-[#49AE44] drop-shadow-[0_8px_16px_rgba(57,164,50,0.24)] font-bold text-base text-white rounded-lg py-3 cursor-pointer"
             value="Reset Password"
           />
+
+          {error && (
+            <p className="text-[#da4f49] text-center text-sm font-normal mt-6">
+              {error}
+            </p>
+          )}
         </form>
       </div>
     </div>

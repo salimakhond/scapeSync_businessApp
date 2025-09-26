@@ -3,14 +3,18 @@ import googleIcon from "../assets/icon/googleIcon.png";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
   const [showConfPass, setConfShowPass] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setError("");
+
     const formData = new FormData(e.target);
     const {
       first_name,
@@ -23,7 +27,7 @@ const Register = () => {
     const terms = !!checkbox;
 
     if (password !== password_confirmation) {
-      alert("Passwords do not match!");
+      setError("Passwords do not match!");
       return;
     }
 
@@ -49,16 +53,21 @@ const Register = () => {
       const data = await response.json();
       // console.log("Registration response:", data);
 
-      if (data.token) {
-        localStorage.setItem("token", data.token);
-        alert("Registration successful!");
+      if (response.ok) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${data.message || "Registration successful!"} `,
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/verify_otp");
       } else {
-        alert(data.message || "Registration failed!");
+        setError(data.message || "Registration failed!");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Something went wrong. Try again.");
+      setError("Something went wrong. Try again.");
     }
   };
 
@@ -85,12 +94,14 @@ const Register = () => {
               name="first_name"
               className="input w-full text-base text-[#212B36] placeholder-[#919EAB] h-14 font-normal pl-[14px] px-4 border-[#919EAB52] rounded-lg focus:outline-none focus:border-[#919EAB52] focus:ring-0"
               placeholder="First Name"
+              required
             />
             <input
               type="text"
               name="last_name"
               className="input w-full text-base text-[#212B36] placeholder-[#919EAB] h-14 font-normal pl-[14px] px-4 border-[#919EAB52] rounded-lg focus:outline-none focus:border-[#919EAB52] focus:ring-0"
               placeholder="Last Name"
+              required
             />
           </div>
           <input
@@ -98,6 +109,7 @@ const Register = () => {
             name="email"
             className="mb-6 input w-full text-base text-[#212B36] placeholder-[#919EAB] h-14 font-normal pl-[14px] px-4 border-[#919EAB52] rounded-lg focus:outline-none focus:border-[#919EAB52] focus:ring-0"
             placeholder="Email"
+            required
           />
           <div className="relative w-full">
             <input
@@ -105,6 +117,7 @@ const Register = () => {
               name="password"
               placeholder="Password"
               className="mb-6 input w-full text-base text-[#212B36] placeholder-[#919EAB] h-14 font-normal pl-[14px] pr-10 border-[#919EAB52] rounded-lg focus:outline-none focus:border-[#919EAB52] focus:ring-0"
+              required
             />
             <button
               type="button"
@@ -123,7 +136,8 @@ const Register = () => {
               type={showConfPass ? "text" : "password"}
               name="password_confirmation"
               className="mb-4 input w-full text-base text-[#212B36] placeholder-[#919EAB] h-14 font-normal pl-[14px] px-4 border-[#919EAB52] rounded-lg focus:outline-none focus:border-[#919EAB52] focus:ring-0"
-              placeholder="Confirm Password "
+              placeholder="Confirm Password"
+              required
             />
             <button
               type="button"
@@ -143,6 +157,7 @@ const Register = () => {
               name="checkbox"
               className="checkbox bg-[#49AE44]"
               style={{ background: "#49AE44", color: "white" }}
+              required
             />
             <p className="text-[#212B36] text-sm font-normal">
               I agree to Tech Takes{" "}
@@ -157,11 +172,18 @@ const Register = () => {
           </div>
           <input
             type="submit"
-            className="!bg-[#49AE44] drop-shadow-[0_8px_16px_rgba(57,164,50,0.24)] font-bold text-base text-white rounded-lg py-3 mt-6 mb-12 cursor-pointer"
+            className="!bg-[#49AE44] drop-shadow-[0_8px_16px_rgba(57,164,50,0.24)] font-bold text-base text-white rounded-lg py-3 mt-6 cursor-pointer"
             value="Create Account"
           />
+
+          {error && (
+            <p className="text-[#da4f49] text-center text-sm font-normal mt-6">
+              {error}
+            </p>
+          )}
         </form>
-        <div className="divider border-[rgba(145,158,171,0.24)]">OR</div>
+
+        <div className="divider border-[rgba(145,158,171,0.24)] mt-12">OR</div>
         <button className="btn w-full mt-4 border-[rgba(145,158,171,0.32)] font-bold text-base text-[rgba(99,115,129,1)] bg-transparent rounded-lg py-3 mb-8">
           <img src={googleIcon} alt="" /> Continue with Google
         </button>

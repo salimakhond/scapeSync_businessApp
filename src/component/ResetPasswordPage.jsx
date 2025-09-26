@@ -2,20 +2,23 @@ import logo from "../assets/logo.svg";
 import { useState } from "react";
 import { FaEye, FaEyeSlash, FaChevronLeft } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ResetPasswordPage = () => {
   const [showPass, setShowPass] = useState(false);
   const [showConfPass, setConfShowPass] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
+    setError("");
 
     const formData = new FormData(e.target);
     const { password, password_confirmation } = Object.fromEntries(formData);
 
     if (password !== password_confirmation) {
-      alert("Passwords do not match!");
+      setError("Passwords do not match!");
       return;
     }
 
@@ -23,7 +26,7 @@ const ResetPasswordPage = () => {
     // console.log(token);
 
     if (!token) {
-      alert("Token not found. Please verify OTP again.");
+      setError("Token not found. Please verify OTP again.");
       return;
     }
 
@@ -42,18 +45,24 @@ const ResetPasswordPage = () => {
       );
 
       const data = await response.json();
-      //   console.log("Reset Password response:", data);
+      // console.log("Reset Password response:", data);
 
       if (response.ok) {
-        alert("Password reset successful!");
         localStorage.removeItem("reset_token");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${data.message || "Password reset successful!"} `,
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/");
       } else {
-        alert("Failed to reset password");
+        setError(data.message || "Failed to reset password");
       }
     } catch (error) {
       console.error("Error resetting password:", error);
-      alert("Something went wrong!");
+      setError("Something went wrong!");
     }
   };
 
@@ -85,6 +94,7 @@ const ResetPasswordPage = () => {
               name="password"
               placeholder="Password"
               className="mb-6 input w-full text-base text-[#212B36] placeholder-[#919EAB] h-14 font-normal pl-[14px] pr-10 border-[#919EAB52] rounded-lg focus:outline-none focus:border-[#919EAB52] focus:ring-0"
+              required
             />
             <button
               type="button"
@@ -103,7 +113,8 @@ const ResetPasswordPage = () => {
               type={showConfPass ? "text" : "password"}
               name="password_confirmation"
               className="mb-4 input w-full text-base text-[#212B36] placeholder-[#919EAB] h-14 font-normal pl-[14px] px-4 border-[#919EAB52] rounded-lg focus:outline-none focus:border-[#919EAB52] focus:ring-0"
-              placeholder="Confirm Password "
+              placeholder="Confirm Password"
+              required
             />
             <button
               type="button"
@@ -117,12 +128,17 @@ const ResetPasswordPage = () => {
               )}
             </button>
           </div>
-
           <input
             type="submit"
-            className="!bg-[#49AE44] drop-shadow-[0_8px_16px_rgba(57,164,50,0.24)] font-bold text-base text-white rounded-lg py-3 mt-6 mb-12 cursor-pointer"
+            className="!bg-[#49AE44] drop-shadow-[0_8px_16px_rgba(57,164,50,0.24)] font-bold text-base text-white rounded-lg py-3 mt-6 cursor-pointer"
             value="Reset Password"
           />
+
+          {error && (
+            <p className="text-[#da4f49] text-center text-sm font-normal mt-6">
+              {error}
+            </p>
+          )}
         </form>
       </div>
     </div>

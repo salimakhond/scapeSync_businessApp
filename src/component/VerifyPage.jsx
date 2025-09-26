@@ -2,9 +2,11 @@ import logo from "../assets/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const VerifyPage = () => {
   const [otpCode, setOtpCode] = useState(new Array(6).fill(""));
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (element, index) => {
@@ -21,11 +23,13 @@ const VerifyPage = () => {
 
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
+    setError("");
+
     const email = e.target.email.value;
     const otp = otpCode.join("");
 
     if (otp.length < 6) {
-      alert("Please enter all 6 digits of OTP");
+      setError("Please enter all 6 digits of OTP");
       return;
     }
 
@@ -46,14 +50,20 @@ const VerifyPage = () => {
       // console.log("OTP verified response:", data);
 
       if (response.ok) {
-        alert("OTP verified successfully!");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${data.message || "OTP verified successfully!"} `,
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/login");
       } else {
-        alert("OTP verification failed");
+        setError(data.message || "OTP verification failed");
       }
     } catch (error) {
       console.error("Error verifying OTP:", error);
-      alert("Something went wrong!");
+      setError("Something went wrong!");
     }
   };
 
@@ -84,8 +94,8 @@ const VerifyPage = () => {
             name="email"
             className="mb-6 input w-full text-base text-[#212B36] placeholder-[#919EAB] h-14 font-normal pl-[14px] px-4 border-[#919EAB52] rounded-lg focus:outline-none focus:border-[#919EAB52] focus:ring-0"
             placeholder="Email"
+            required
           />
-
           <div className="flex justify-between mb-6">
             {otpCode.map((data, index) => (
               <input
@@ -101,12 +111,17 @@ const VerifyPage = () => {
               />
             ))}
           </div>
-
           <input
             type="submit"
             className="!bg-[#49AE44] drop-shadow-[0_8px_16px_rgba(57,164,50,0.24)] font-bold text-base text-white rounded-lg py-3 mb-6 cursor-pointer"
             value="Verify"
           />
+
+          {error && (
+            <p className="text-[#da4f49] text-center text-sm font-normal mb-6">
+              {error}
+            </p>
+          )}
         </form>
 
         <p className="text-center text-sm font-normal text-[#212B36]">

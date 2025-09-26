@@ -6,8 +6,8 @@
 
 ## 📖 Project Overview
 
-This project is a **pixel-perfect, production-ready landing page** with authentication (Register, Verify OTP, Login, Forgot Password, Reset Password).  
-It was built based on the provided **Figma design** and implemented with full responsiveness, accessibility, and smooth animations.
+ScapeSync is a **pixel-perfect landing page** with authentication (Register, Verify OTP, Login, Forgot Password, Reset Password, etc).
+It was built based on the provided **Figma design** and implemented with full responsiveness.
 
 ---
 
