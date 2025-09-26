@@ -8,6 +8,8 @@ import Register from "./component/Register.jsx";
 import Login from "./component/Login.jsx";
 import VerifyPage from "./component/VerifyPage.jsx";
 import ResetPasswordPage from "./component/ResetPasswordPage.jsx";
+import ForgotPasswordPage from "./component/ForgotPasswordPage.jsx";
+import ForgotVerifyOtpPage from "./component/ForgotVerifyOtpPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
   {
     path: "login",
     Component: Login,
+  },
+  {
+    path: "forgot-password",
+    Component: ForgotPasswordPage,
+  },
+  {
+    path: "forgot-verify-otp",
+    Component: ForgotVerifyOtpPage,
   },
   {
     path: "reset-password",

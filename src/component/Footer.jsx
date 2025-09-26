@@ -1,10 +1,15 @@
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 import footerLogo from "../assets/footerLogo.png";
 import footerStoreLogo from "../assets/footerStoreLogo.png";
+import { FaXTwitter } from "react-icons/fa6";
+import footerVectorOne from "../assets/footerVectorOne.png";
+import footerVectorTwo from "../assets/footerVectorTwo.png";
+import footerVectorThree from "../assets/footerVectorThree.png";
 
 const Footer = () => {
   return (
     <footer className="public-sans bg-[#0F3B34] pt-16 md:pt-[100px] ">
-      <div className="max-w-[1440px] mx-auto px-8 md:px-30 mb-16 md:mb-[100px]">
+      <div className="max-w-[1440px] mx-auto px-8 md:px-30 mb-16">
         <div className="grid lg:grid-cols-12 gap-y-10 lg:gap-0 items-center justify-between">
           <div className="col-span-3">
             <a href="/">
@@ -23,6 +28,12 @@ const Footer = () => {
               <img src={footerStoreLogo} alt="App store logo" />
             </a>
           </div>
+        </div>
+        <div className="flex flex-row space-x-8 mt-[100px]">
+          <FaYoutube className="text-white text-3xl" />
+          <FaXTwitter className="text-white text-3xl" />
+          <FaFacebook className="text-white text-3xl" />
+          <FaInstagram className="text-white text-3xl" />
         </div>
       </div>
       <div className="divider bg-[rgba(215,218,224,1)] h-[1px] opacity-25"></div>

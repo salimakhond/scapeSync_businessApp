@@ -99,7 +99,7 @@ const Login = () => {
               <p className="text-[#212B36] text-sm font-normal">Remember me</p>
             </div>
             <div className="text-sm font-normal text-[#49AE44]">
-              <Link to={""}>Forgot password?</Link>
+              <Link to={"/forgot-password"}>Forgot password?</Link>
             </div>
           </div>
 
@@ -115,7 +115,7 @@ const Login = () => {
         </button>
         <p className="text-center text-sm font-normal text-[#212B36]">
           Don’t have an account?{" "}
-          <Link className="text-[#49AE44]" to={"register"}>
+          <Link className="text-[#49AE44]" to={"/register"}>
             Get started
           </Link>
         </p>

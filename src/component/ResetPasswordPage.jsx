@@ -1,10 +1,16 @@
 import logo from "../assets/logo.svg";
+import { useState } from "react";
+import { FaEye, FaEyeSlash, FaChevronLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ResetPasswordPage = () => {
+  const [showPass, setShowPass] = useState(false);
+  const [showConfPass, setConfShowPass] = useState(false);
+
   const handleResetPassword = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const { email } = Object.fromEntries(formData);
+    const { password, password_confirmation } = Object.fromEntries(formData);
   };
   return (
     <div className="max-w-[1440px] mx-auto public-sans">
@@ -14,26 +20,62 @@ const ResetPasswordPage = () => {
         </a>
       </div>
       <div className="p-8 md:p-0 w-[480px] m-auto bg-white min-h-screen">
-        <div className="text-center mb-16">
+        <button className="text-sm font-bold text-[#49AE44] flex items-center gap-2 p-1 mb-8">
+          <FaChevronLeft className="text-lg" />
+          <Link to={"/forgot-verify-otp"}>Back</Link>
+        </button>
+        <div className="text-left mb-16">
           <h4 className="text-[rgba(33,43,54,1)] font-bold text-2xl mb-2">
-            Forgot your password?
+            Enter Your New Password.
           </h4>
           <p className="text-[#637381] text-base font-normal">
-            Please enter the email address associated with your account, and
-            we'll email you a link to reset your password.
+            Please enter the email address associated with you account, and we
+            we'll email you a link to reset password.
           </p>
         </div>
         <form onSubmit={handleResetPassword} className="fieldset">
-          <input
-            type="email"
-            name="email"
-            className="mb-6 input w-full text-base text-[#212B36] placeholder-[#919EAB] h-14 font-normal pl-[14px] px-4 border-[#919EAB52] rounded-lg focus:outline-none focus:border-[#919EAB52] focus:ring-0"
-            placeholder="Email"
-          />
+          <div className="relative w-full">
+            <input
+              type={showPass ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              className="mb-6 input w-full text-base text-[#212B36] placeholder-[#919EAB] h-14 font-normal pl-[14px] pr-10 border-[#919EAB52] rounded-lg focus:outline-none focus:border-[#919EAB52] focus:ring-0"
+            />
+            <button
+              type="button"
+              className="absolute right-4 top-[20px] text-[#919EAB] cursor-pointer z-10"
+              onClick={() => setShowPass(!showPass)}
+            >
+              {showPass ? (
+                <FaEyeSlash className="text-xl" />
+              ) : (
+                <FaEye className="text-xl" />
+              )}
+            </button>
+          </div>
+          <div className="relative w-full">
+            <input
+              type={showConfPass ? "text" : "password"}
+              name="password_confirmation"
+              className="mb-4 input w-full text-base text-[#212B36] placeholder-[#919EAB] h-14 font-normal pl-[14px] px-4 border-[#919EAB52] rounded-lg focus:outline-none focus:border-[#919EAB52] focus:ring-0"
+              placeholder="Confirm Password "
+            />
+            <button
+              type="button"
+              className="absolute right-4 top-[20px] text-[#919EAB] cursor-pointer z-10"
+              onClick={() => setConfShowPass(!showConfPass)}
+            >
+              {showConfPass ? (
+                <FaEyeSlash className="text-xl" />
+              ) : (
+                <FaEye className="text-xl" />
+              )}
+            </button>
+          </div>
 
           <input
             type="submit"
-            className="bg-[#49AE44] font-bold text-base text-white rounded-lg py-3 mb-6 cursor-pointer"
+            className="bg-[#49AE44] font-bold text-base text-white rounded-lg py-3 mt-6 mb-12 cursor-pointer"
             value="Reset Password"
           />
         </form>

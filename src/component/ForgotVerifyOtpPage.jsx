@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 
-const VerifyPage = () => {
+const ForgotVerifyOtpPage = () => {
   const [otpCode, setOtpCode] = useState(new Array(6).fill(""));
 
   const handleChange = (element, index) => {
@@ -18,7 +18,7 @@ const VerifyPage = () => {
     }
   };
 
-  const handleVerifyOtp = async (e) => {
+  const handleForgetVerifyOtp = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const otp = otpCode.join("");
@@ -34,7 +34,7 @@ const VerifyPage = () => {
       formData.append("otp", otp);
 
       const response = await fetch(
-        "https://apitest.softvencefsd.xyz/api/verify_otp",
+        "https://apitest.softvencefsd.xyz/api/forgot-verify-otp",
         {
           method: "POST",
           body: formData,
@@ -65,18 +65,18 @@ const VerifyPage = () => {
       <div className="p-8 md:p-0 w-[480px] m-auto bg-white min-h-screen">
         <button className="text-sm font-bold text-[#49AE44] flex items-center gap-2 p-1 mb-8">
           <FaChevronLeft className="text-lg" />
-          <Link to={"/register"}>Back</Link>
+          <Link to={"/forgot-password"}>Back</Link>
         </button>
         <div className="text-left mb-16">
           <h4 className="text-[rgba(33,43,54,1)] font-bold text-2xl mb-2">
-            Please check your email!
+            Check your email send forget OTP!
           </h4>
           <p className="text-[#637381] text-base font-normal">
             We've emailed a 6-digit confirmation code to acb@domain, please
             enter the code in below box to verify your email.
           </p>
         </div>
-        <form onSubmit={handleVerifyOtp} className="fieldset">
+        <form onSubmit={handleForgetVerifyOtp} className="fieldset">
           <input
             type="email"
             name="email"
@@ -118,4 +118,4 @@ const VerifyPage = () => {
   );
 };
 
-export default VerifyPage;
+export default ForgotVerifyOtpPage;

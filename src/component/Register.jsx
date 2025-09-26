@@ -42,8 +42,7 @@ const Register = () => {
 
       const data = await response.json();
       console.log("Registration response:", data);
-      console.log(data.token);
-      // If success, maybe save token
+
       if (data.token) {
         localStorage.setItem("token", data.token);
         alert("Registration successful!");
@@ -161,7 +160,7 @@ const Register = () => {
         </button>
         <p className="text-center text-sm font-normal text-[#212B36]">
           Already have an account?{" "}
-          <Link className="text-[#49AE44]" to={"login"}>
+          <Link className="text-[#49AE44]" to={"/login"}>
             Login
           </Link>
         </p>
