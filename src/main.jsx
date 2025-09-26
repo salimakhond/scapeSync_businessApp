@@ -6,6 +6,8 @@ import MainLayout from "./layout/MainLayout.jsx";
 import Home from "./component/Home.jsx";
 import Register from "./component/Register.jsx";
 import Login from "./component/Login.jsx";
+import VerifyPage from "./component/VerifyPage.jsx";
+import ResetPasswordPage from "./component/ResetPasswordPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,15 +18,23 @@ const router = createBrowserRouter([
         index: true,
         Component: Home,
       },
-      {
-        path: "register",
-        Component: Register,
-      },
-      {
-        path: "login",
-        Component: Login,
-      },
     ],
+  },
+  {
+    path: "register",
+    Component: Register,
+  },
+  {
+    path: "verify_otp",
+    Component: VerifyPage,
+  },
+  {
+    path: "login",
+    Component: Login,
+  },
+  {
+    path: "reset-password",
+    Component: ResetPasswordPage,
   },
 ]);
 

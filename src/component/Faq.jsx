@@ -2,7 +2,7 @@ const Faq = () => {
   return (
     <section className="my-20 md:my-24 lg:my-40 px-8 md:px-30 relative">
       <div className="absolute bg-[rgba(157,255,153,0.1)] w-[500px] h-[720px] top-[-190px] left-[-500px] md:left-[-480px] rotate-[20deg] z-10 blur-[150px] rounded-full"></div>
-      <div className="hidden md:block absolute bg-[rgba(157,255,153,0.1)] w-[500px] h-[720px] -right-20 rotate-[20deg] z-10 blur-[150px] rounded-full"></div>
+      <div className="hidden lg:block absolute bg-[rgba(157,255,153,0.1)] w-[500px] h-[720px] -right-20 rotate-[20deg] z-10 blur-[150px] rounded-full"></div>
 
       <div className="w-full m-auto text-center mb-10 md:mb-[60px]">
         <h2 className="text-2xl md:text-[40px] lg:text-5xl leading-16 text-[#212B36] font-bold mb-2">
