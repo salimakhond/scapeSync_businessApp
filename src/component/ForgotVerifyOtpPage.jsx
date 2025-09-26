@@ -105,7 +105,7 @@ const ForgotVerifyOtpPage = () => {
 
           <input
             type="submit"
-            className="bg-[#49AE44] font-bold text-base text-white rounded-lg py-3 mb-6 cursor-pointer"
+            className="!bg-[#49AE44] drop-shadow-[0_8px_16px_rgba(57,164,50,0.24)] font-bold text-base text-white rounded-lg py-3 mb-6 cursor-pointer"
             value="Verify"
           />
         </form>

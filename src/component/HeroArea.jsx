@@ -20,7 +20,7 @@ const HeroArea = () => {
         </div>
         <div className="flex-none">
           <Link to={"register"}>
-            <button className="btn bg-[#3BA334] drop-shadow-[0_8px_16px_rgba(57,164,50,0.24)] font-bold text-base text-white mx-[26] my-[10px]">
+            <button className="btn border-none bg-[#3BA334] drop-shadow-[0_8px_16px_rgba(57,164,50,0.24)] font-bold text-base text-white mx-[26] my-[10px]">
               Get Started
             </button>
           </Link>

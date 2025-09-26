@@ -5,3 +5,7 @@
 .public-sans {
   font-family: "Public Sans", sans-serif;
 }
+body,
+input {
+  @apply bg-white;
+}

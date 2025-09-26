@@ -17,7 +17,7 @@ const Services = () => {
           <img
             src={vectorBottom}
             alt="bottom vector"
-            className="absolute -bottom-[6px] md:bottom-1 left-6/9 md:left-6/9 lg:left-4/7 transform -translate-x-1/2 -translate-y-1/2 -z-10"
+            className="absolute -bottom-[6px] md:-bottom-3 left-6/9 md:left-6/9 lg:left-4/7 transform -translate-x-1/2 -translate-y-1/2 -z-10"
           />
         </div>
         <p className="text-[#637381] text-sm font-normal leading-[150%] md:w-[555px] m-auto">

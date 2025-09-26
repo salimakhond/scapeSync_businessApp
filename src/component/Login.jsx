@@ -106,7 +106,7 @@ const Login = () => {
 
           <input
             type="submit"
-            className="bg-[#49AE44] font-bold text-base text-white rounded-lg py-3 mt-6 mb-12 cursor-pointer"
+            className="!bg-[#49AE44] drop-shadow-[0_8px_16px_rgba(57,164,50,0.24)] font-bold text-base text-white rounded-lg py-3 mt-6 mb-12 cursor-pointer"
             value="Login"
           />
         </form>
